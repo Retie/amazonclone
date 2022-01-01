@@ -1,5 +1,6 @@
 package clone.amazon.mapper;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.apache.ibatis.annotations.*;
@@ -12,13 +13,17 @@ public interface MemberMapper {
 	@Options(useGeneratedKeys = true, keyProperty = "id")
 	int create(@Param("member") Member member);
 	
+	@Select("SELECT * FROM member")
+	//@Result(property="자바 객체 property명", column="db 테이블 컬럼 명")
+	List<Member> findAll();
+	
 	@Select("SELECT * FROM member WHERE id = #{id}")
 	//@Result(property="자바 객체 property명", column="db 테이블 컬럼 명")
-	Optional<Member> getById(@Param("id") String id);
+	Optional<Member> findById(@Param("id") String id);
 	
 	@Select("SELECT * FROM member WHERE email = #{email}")
 	@ResultMap("MemberMap")
-	Optional<Member> getByEmail(@Param("email") String email);
+	Optional<Member> findByEmail(@Param("email") String email);
 	
 
 }
