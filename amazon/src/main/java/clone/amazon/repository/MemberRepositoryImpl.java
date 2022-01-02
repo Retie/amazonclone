@@ -34,8 +34,8 @@ public class MemberRepositoryImpl implements MemberRepository {
 	}
 
 	@Override
-	public Member findOne(Long id) {
-		return sqlSession.selectOne("MemberMapper.findById");
+	public Member findOne(Member member) {
+		return sqlSession.selectOne("MemberMapper.findOne");
 	}
 	
 	@Override

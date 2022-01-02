@@ -2,21 +2,36 @@ package clone.amazon.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import clone.amazon.domain.Member;
 import clone.amazon.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 
+@Service
 public class MemberServiceImpl implements MemberService {
-	private MemberRepository memberRepository;
+	
+	@Autowired
+	private final MemberRepository memberRepositoryImpl;
+	
+	public MemberServiceImpl(MemberRepository memberRepositoryImpl) {
+		super();
+		this.memberRepositoryImpl = memberRepositoryImpl;
+	}
+	
+	@Autowired
+	Member member = new Member();
 	
 	@Override
-	public Long join(Member member) {
-		validateDuplicateMember(member);
-		memberRepository.join(member);
-		return member.getId();
+	public Member join(Member member) {
+		//validateDuplicateMember(member);
+		memberRepositoryImpl.join(member);
+		return member;
 	}
 
 	private void validateDuplicateMember(Member member) {
-		List<Member> findMembers = memberRepository.findByName(member.getName());
+		List<Member> findMembers = memberRepositoryImpl.findByName(member.getName());
 		if (!findMembers.isEmpty()) {
 			throw new IllegalStateException("이미 존재하는 회원입니다.");
 		}
@@ -25,12 +40,12 @@ public class MemberServiceImpl implements MemberService {
 	//회원 전체 조회
 	@Override
 	public List<Member> findMembers() {
-		return memberRepository.findAll();
+		return memberRepositoryImpl.findAll();
 	}
 	
 	//회원 한 건 조회
 	@Override
 	public Member findOne(Long id) {
-		return memberRepository.findOne(id);
+		return memberRepositoryImpl.findOne(member);
 	}
 }

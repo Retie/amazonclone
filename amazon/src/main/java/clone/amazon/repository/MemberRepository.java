@@ -21,7 +21,8 @@ public interface MemberRepository {
 	
 	public List<Member> findAll();
 
-	public Member findOne(Long id);
+	public Member findOne(Member member);
+	
 	public List<Member> findByName(String name);
 	
 	public int updateMember(Member member);
