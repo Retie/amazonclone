@@ -2,15 +2,14 @@ package clone.amazon.service;
 
 import java.util.List;
 
-
 import clone.amazon.domain.Member;
 
 public interface MemberService {
 	
+	int join(Member member);
 	
-	public Member join(Member member);
-
-	public List<Member> findMembers();
-
-	public Member findOne(Long id);
+	List<Member> findAll();
+	
+	Member findByName(String name);
+	
 }
