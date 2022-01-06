@@ -10,6 +10,8 @@ public interface MemberService {
 	
 	List<Member> findAll();
 	
+	Member findById(Long id);
+
 	Member findByName(String name);
 	
 }

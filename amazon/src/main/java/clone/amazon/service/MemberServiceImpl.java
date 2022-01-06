@@ -2,14 +2,17 @@ package clone.amazon.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import clone.amazon.domain.Member;
 import clone.amazon.mapper.MemberMapper;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+@Service
 public class MemberServiceImpl implements MemberService {
-
-	private final MemberMapper memberMapper;
+	
+	@Autowired
+	private MemberMapper memberMapper;
 	
 	@Override
 	public int join(Member member) {
@@ -18,14 +21,17 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<Member> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return memberMapper.findAll();
 	}
 
 	@Override
+	public Member findById(Long id) {
+		return memberMapper.findById(id);
+	}
+	
+	@Override
 	public Member findByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return memberMapper.findByName(name);
 	}
 
 }
