@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html>
-<head th:replace="fragments/header :: header" />
+<head/>
 <body>
 	<div class="container">
 		<div replace="fragments/bodyHeader :: bodyHeader" />
