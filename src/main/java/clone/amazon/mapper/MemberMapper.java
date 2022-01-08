@@ -11,6 +11,9 @@ public interface MemberMapper {
 
 	@Insert("INSERT INTO member(name, email, password) VALUES(#{member.name}, #{member.email}, #{member.password})")
 	@Options(useGeneratedKeys = true, keyProperty = "id")
+	@Results(id = "memberMap", value = {
+			@Result(property = "phoneNum", column = "phone_num"),
+			@Result(property = "regDate", column = "reg_date") })
 	int join(@Param("member") Member member);
 
 	@Select("SELECT * FROM member")
