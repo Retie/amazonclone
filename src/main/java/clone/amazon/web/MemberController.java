@@ -2,6 +2,7 @@ package clone.amazon.web;
 
 import java.util.List;
 
+import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,11 @@ public class MemberController {
 		return "members/memberList";
 	}
 	
+	@GetMapping(value = "/join")
+	public String joinPage() {
+		return "members/memberJoin";
+	}
+	
 	@PostMapping(value = "/join")
 	public Member join(@RequestBody Member member) {
 		memberService.join(member);
@@ -39,9 +45,9 @@ public class MemberController {
 	}
 
 	@GetMapping("/{id}")
-	public Member findById(@PathVariable("id") Long id) {
-		log.info("" + memberService.findById(id));
-		return memberService.findById(id);
+	public String findById(Model model, @PathVariable("id") Long id) {
+		memberService.findById(id);
+		return "members/memberInfo";
 	}
 	
 	/*
