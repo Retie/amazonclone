@@ -17,7 +17,7 @@ import clone.amazon.service.MemberService;
 import lombok.extern.slf4j.Slf4j;
 
 @Controller
-//restcontroller가 아니기 때문에 값은 tostring이 있는 것만 log.info로만 찍힌다
+//restcontroller가 아니기 때문에 값은 tostring이 있는 것만 log.info로만 찍힌다!
 @RequestMapping("/member")
 @Slf4j
 public class MemberController {

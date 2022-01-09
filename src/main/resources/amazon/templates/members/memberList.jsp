@@ -1,18 +1,25 @@
+<%@page import="java.io.PrintWriter"%>
+<%@page import="clone.amazon.domain.Member"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% request.setCharacterEncoding("utf-8"); %>
+<jsp:useBean id="member" class="clone.amazon.domain.MemberAccount" scope="page" />
+<jsp:setProperty name="member" property="userID" />
+<jsp:setProperty name="member" property="userPassword" />
 <!DOCTYPE HTML>
 <html>
 <head/>
 <body>
 	<div class="container">
-		<div replace="fragments/bodyHeader :: bodyHeader" />
 		<div>
 			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>이름</th>
-						<th>도시</th>
-						<th>주소</th>
-						<th>우편번호</th>
+						<th>Name:</th>
+						<th>Email:</th>
+						<th>Mobile Phone Number:</th>
+						<th>Password:</th>
 					</tr>
 				</thead>
 				<tbody>

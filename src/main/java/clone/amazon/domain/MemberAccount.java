@@ -1,17 +1,23 @@
 package clone.amazon.domain;
 
-import java.util.Date;
+import java.sql.Timestamp;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public class MemberAccount {
 	//PK
 	public Long id;
 
 	public String name;
 	public String email;
-	public String phoneNum;
 	public String password;
+	
+	public String phoneNum;
 	public Grade grade;
-	public String otp;
-	public Date regDate;
+	public String address;
+	public Timestamp regDate;
+	public boolean phoneCerti;
 	
 }
