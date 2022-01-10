@@ -3,14 +3,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+	<link rel="stylesheet" href="/resource/css/bootstrap.css">
+</head>
 <body>
 	<div class="container">
 		Create account
-		<form role="form" action="/members/join" method="post">
+		<form role="form" action="/member/join" method="post">
 			<div class="form-group">
-				<label>Your name</label> <input type="text" maxlength="50" id="name"
-					name="customerName"
-					class="a-input-text a-span12 auth-autofocus auth-required-field auth-contact-verification-request-info a-form-error">
+				<label>Your name</label> <input type="text" maxlength="50" id="name" name="customerName">
 
 				<div id="auth-customerName-missing-alert"
 					class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-top-mini"
@@ -23,16 +23,12 @@
 			</div>
 
 			<div class="form-group">
-				<div class="auth-require-fields-match-group">
-					<div class="a-row a-spacing-base">
-						<label for="ap_email" class="a-form-label"> Email </label> <input
-							type="email" maxlength="64" id="email" autocomplete="email"
-							name="email"
-							class="a-input-text a-span12 auth-required-field auth-require-fields-match auth-require-email-validaton auth-require-reverify-on-change auth-contact-verification-request-info a-form-error">
+						<label for="ap_email" class="a-form-label"> Email </label>
+						<input type="email" maxlength="255" id="email" name="email">
+						
 						<div id="auth-email-missing-alert"
 							class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-top-mini"
 							role="alert" style="display: none;">
-
 							<div class="a-box-inner a-alert-container">
 								<i class="a-icon a-icon-alert"></i>
 								<div class="a-alert-content">Enter your email</div>
@@ -67,32 +63,17 @@
 							</div>
 						</div>
 
-						<div id="auth-email-missing-alert-ango-phone"
-							class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-top-mini"
-							role="alert" style="display: none;">
-							<div class="a-box-inner a-alert-container">
-								<i class="a-icon a-icon-alert"></i>
-								<div class="a-alert-content">Enter your mobile phone
-									number</div>
-							</div>
-						</div>
 					</div>
-				</div>
-			</div>
 
 			<div class="a-row a-spacing-base">
-				<label for="ap_password" class="a-form-label"> Password </label> <input
-					type="password" maxlength="1024" id="ap_password"
-					autocomplete="off" placeholder="At least 6 characters"
-					name="password" tabindex="5"
-					class="a-input-text a-span12 auth-required-field auth-require-fields-match auth-require-password-validation a-form-error">
+				<label for="ap_password" class="a-form-label"> Password </label>
+				<input type="password" maxlength="30" id="password"
+					placeholder="At least 6 characters" name="password">
 				<div
-					class="a-box a-alert-inline a-alert-inline-info auth-inlined-information-message a-spacing-top-mini"
 					aria-live="polite" aria-atomic="true" style="display: none;">
 					<div class="a-box-inner a-alert-container">
 						<i class="a-icon a-icon-alert"></i>
-						<div class="a-alert-content">Passwords must be at least 6
-							characters.</div>
+						<div class="a-alert-content">Passwords must be at least 6 characters.</div>
 					</div>
 				</div>
 
@@ -110,8 +91,7 @@
 					role="alert" style="display: none;">
 					<div class="a-box-inner a-alert-container">
 						<i class="a-icon a-icon-alert"></i>
-						<div class="a-alert-content">Passwords must be at least 6
-							characters.</div>
+						<div class="a-alert-content">Passwords must be at least 6 characters.</div>
 					</div>
 				</div>
 
@@ -140,8 +120,8 @@
 					</div>
 				</div>
 			</div>
-
-		</form>
+				<button type="submit" id="continue" class="btn btn-primary">Create your Amazon account</button>
+			</form>
 	</div>
 	<!-- /container -->
 </body>

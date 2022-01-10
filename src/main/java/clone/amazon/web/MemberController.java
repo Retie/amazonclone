@@ -39,10 +39,18 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "/join")
-	public Member join(@RequestBody Member member) {
+	public String join(@RequestBody Member member) {
+		//로직 만들기!!!!!
+		
 		memberService.join(member);
-		return member;
+		return "redirect:/";
 	}
+	
+	@GetMapping(value = "/login")
+	public String loginPage() {
+		return "members/loginForm";
+	}
+	
 
 	@GetMapping("/{id}")
 	public String findById(Model model, @PathVariable("id") Long id) {
