@@ -1,5 +1,6 @@
 package clone.amazon.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import clone.amazon.domain.Member;
 import clone.amazon.mapper.MemberMapper;
+import clone.amazon.web.MemberForm;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -30,8 +32,9 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public Member findByName(String name) {
+	public String findByName(String name) {
 		return memberMapper.findByName(name);
 	}
+	
 
 }

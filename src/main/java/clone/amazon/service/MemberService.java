@@ -1,5 +1,6 @@
 package clone.amazon.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import clone.amazon.domain.Member;
@@ -12,6 +13,6 @@ public interface MemberService {
 	
 	Member findById(Long id);
 
-	Member findByName(String name);
+	String findByName(String name);
 	
 }

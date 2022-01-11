@@ -28,9 +28,9 @@ public interface MemberMapper {
 	Member findById(@Param("id") Long id);
 
 	
-	@Select("SELECT * FROM member WHERE name = #{name}")
+	@Select("SELECT name FROM member WHERE name = #{name}")
 	@ResultMap("memberMap")
-	Member findByName(@Param("name") String name);
+	String findByName(@Param("name") String name);
 	
 	
 	/*

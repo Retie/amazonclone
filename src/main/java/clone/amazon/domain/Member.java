@@ -3,11 +3,14 @@
 package clone.amazon.domain;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import clone.amazon.web.MemberForm;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,6 +29,8 @@ public class Member {
 	public String address;
 	public Timestamp regDate;
 	public boolean phoneCerti;
+	
+
 	
 	//ToString은 나중에 지우기
 	@Override

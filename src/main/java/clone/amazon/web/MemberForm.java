@@ -5,12 +5,16 @@ package clone.amazon.web;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 public class MemberForm {
 	private Long id;
-	
+
 	private String name;
 	private String email;
 	private String password;
-	private String password2;
+	private String pwdCheck;
+
+	
+
 }

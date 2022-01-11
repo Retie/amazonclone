@@ -6,11 +6,13 @@ import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import clone.amazon.domain.Member;
@@ -29,6 +31,7 @@ public class MemberController {
 	@GetMapping("")
 	public String memberList(Model model) {
 		List<Member> members = memberService.findAll();
+		log.info(memberService.findAll()+"");
 		model.addAttribute("members", members);
 		return "members/memberList";
 	}
@@ -39,8 +42,19 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "/join")
-	public String join(@RequestBody Member member) {
-		//로직 만들기!!!!!
+	public String join(MemberForm form, BindingResult result) {
+		if (result.hasErrors()){
+			return "members/memberJoin";
+		}
+		log.info("join controller");
+		
+		
+		Member member = new Member();
+		member.setName(form.getName());
+
+		
+		member.setEmail(form.getEmail());
+		member.setPassword(form.getPassword());
 		
 		memberService.join(member);
 		return "redirect:/";
@@ -56,6 +70,12 @@ public class MemberController {
 	public String findById(Model model, @PathVariable("id") Long id) {
 		memberService.findById(id);
 		return "members/memberInfo";
+	}
+	
+	@GetMapping("/{name}")
+	public void findByName(Model model, @PathVariable("name") String name) {
+		memberService.findByName(name);
+		System.out.println(memberService.findByName(name) + "found");
 	}
 	
 	/*

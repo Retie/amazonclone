@@ -19,11 +19,12 @@ public class MemberAccount {
 	public String name;
 	public String email;
 	public String password;
+	public String pwdCheck;
 	
-	public String phoneNum;
+	//public String phoneNum;
 	public Grade grade;
-	public String address;
+	//public String address;
 	public Timestamp regDate;
-	public boolean phoneCerti;
+	//public boolean phoneCerti;
 	
 }
