@@ -1,9 +1,9 @@
 package clone.amazon.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import clone.amazon.domain.Member;
+import clone.amazon.web.MemberForm;
 
 public interface MemberService {
 	
@@ -14,5 +14,5 @@ public interface MemberService {
 	Member findById(Long id);
 
 	String findByName(String name);
-	
+
 }

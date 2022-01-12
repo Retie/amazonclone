@@ -2,12 +2,16 @@ package clone.amazon.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -42,21 +46,33 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "/join")
-	public String join(MemberForm form, BindingResult result) {
-		if (result.hasErrors()){
-			return "members/memberJoin";
-		}
-		log.info("join controller");
-		
-		
-		Member member = new Member();
-		member.setName(form.getName());
+	public String join(HttpServletRequest request, HttpServletResponse response) {
 
 		
-		member.setEmail(form.getEmail());
-		member.setPassword(form.getPassword());
+		log.info("joinController ok...");
+
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String password = request.getParameter("password");
+		
+		Member member = new Member();
+		member.setName(name);
+		member.setEmail(email);
+		member.setPassword(password);
 		
 		memberService.join(member);
+		
+		/*
+		 * if (result.hasErrors()){ return "members/memberJoin"; }
+		 * 
+		 * log.info("join start...");
+		 * 
+		 * 
+		 * Member member = new Member(); member.setName(form.getName());
+		 * member.setEmail(form.getEmail()); member.setPassword(form.getPassword());
+		 * 
+		 * memberService.join(member);
+		 */
 		return "redirect:/";
 	}
 	

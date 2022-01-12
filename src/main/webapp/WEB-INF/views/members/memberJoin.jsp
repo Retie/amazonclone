@@ -100,9 +100,8 @@
 			<div class="a-row a-spacing-base">
 				<label for="ap_password_check" class="a-form-label">
 					Re-enter password </label> <input type="password" maxlength="30"
-					id="pwdCheck" autocomplete="off" name="pwdCheck"
-					tabindex="6"
-					class="a-input-text a-form-normal a-span12 auth-required-field auth-require-fields-match">
+					id="pwdCheck" autocomplete="off" name="pwdCheck">
+					
 				<div id="auth-passwordCheck-missing-alert"
 					class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-top-mini"
 					role="alert" style="display: none;">

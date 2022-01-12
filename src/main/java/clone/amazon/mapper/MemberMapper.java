@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.*;
 
 import clone.amazon.domain.Member;
+import clone.amazon.web.MemberForm;
 
 @Mapper
 public interface MemberMapper {
