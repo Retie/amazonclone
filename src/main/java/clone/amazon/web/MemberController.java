@@ -64,14 +64,6 @@ public class MemberController {
 		
 		/*
 		 * if (result.hasErrors()){ return "members/memberJoin"; }
-		 * 
-		 * log.info("join start...");
-		 * 
-		 * 
-		 * Member member = new Member(); member.setName(form.getName());
-		 * member.setEmail(form.getEmail()); member.setPassword(form.getPassword());
-		 * 
-		 * memberService.join(member);
 		 */
 		return "redirect:/";
 	}

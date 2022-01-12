@@ -20,7 +20,14 @@ public class MemberServiceImpl implements MemberService {
 	public int join(Member member) {
 		return memberMapper.join(member);
 	}
-
+	
+	@Override
+	public void validateNullName(String name) {
+		if(name.isEmpty()) {
+			throw new IllegalStateException("Enter your name");
+		}
+	}
+	
 	@Override
 	public List<Member> findAll() {
 		return memberMapper.findAll();

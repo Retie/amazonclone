@@ -11,7 +11,7 @@
 		Create account
 		<form name="joinForm" role="form" action="/member/join" method="post">
 			<div class="form-group">
-				<label>Your name</label> <input type="text" maxlength="50" id="name" name="name">
+				<label>Your name</label> <input type="text" maxlength="50" id="name" name="name" required>
 				
 				<div id="name-missing-alert" class="alert alert-warning" style="display:none;">
 					<div class="container">
@@ -25,10 +25,9 @@
 
 			<div class="form-group">
 						<label for="ap_email" class="a-form-label"> Email </label>
-						<input type="email" maxlength="255" id="email" name="email">
+						<input type="email" maxlength="255" id="email" name="email" required>
 						
-						<div id="auth-email-missing-alert"
-							class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-top-mini"
+						<div id="auth-email-missing-alert" style="display:none;"
 							role="alert" style="display: none;">
 							<div class="a-box-inner a-alert-container">
 								<i class="a-icon a-icon-alert"></i>
@@ -36,8 +35,7 @@
 							</div>
 						</div>
 
-						<div id="auth-email-invalid-email-alert"
-							class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-top-mini"
+						<div id="auth-email-invalid-email-alert" style="display:none;"
 							role="alert" style="display: block;">
 							<div class="a-box-inner a-alert-container">
 								<i class="a-icon a-icon-alert"></i>
@@ -69,7 +67,7 @@
 			<div class="a-row a-spacing-base">
 				<label for="ap_password" class="a-form-label"> Password </label>
 				<input type="password" maxlength="30" id="password"
-					placeholder="At least 6 characters" name="password">
+					placeholder="At least 6 characters" name="password" required>
 				<div
 					aria-live="polite" aria-atomic="true" style="display: none;">
 					<div class="a-box-inner a-alert-container">
@@ -78,8 +76,7 @@
 					</div>
 				</div>
 
-				<div id="auth-password-missing-alert"
-					class="a-box a-alert-inline a-alert-inline-error auth-inlined-error-message a-spacing-top-mini"
+				<div id="auth-password-missing-alert" style="display:none;"
 					role="alert" style="display: block;">
 					<div class="a-box-inner a-alert-container">
 						<i class="a-icon a-icon-alert"></i>
