@@ -55,7 +55,9 @@ public class MemberController {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 
-		if(memberService.validateNameCheck(name)) {
+		if(!memberService.validateNameCheck(name)) {
+			
+		} else if(memberService.validateNameCheck(name)) {
 			member.setName(name);
 		}
 
