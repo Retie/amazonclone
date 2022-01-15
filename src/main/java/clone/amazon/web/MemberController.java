@@ -48,15 +48,21 @@ public class MemberController {
 	@PostMapping(value = "/join")
 	public String join(HttpServletRequest request, HttpServletResponse response) {
 
-		
 		log.info("joinController ok...");
 
+		Member member = new Member();
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
+
+		if(memberService.validateNameCheck(name)) {
+			member.setName(name);
+		}
+
+		if(memberService.validateEmailCheck(email)) {
+			
+		}
 		
-		Member member = new Member();
-		member.setName(name);
 		member.setEmail(email);
 		member.setPassword(password);
 		

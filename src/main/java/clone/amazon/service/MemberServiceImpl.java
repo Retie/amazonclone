@@ -22,10 +22,22 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public void validateNullName(String name) {
-		if(name.isEmpty()) {
+	public Boolean validateNameCheck(String name) {
+		if(name.isBlank()) {
+			/* 뷰에서 예쁘게 나오게 못 고칠까?? */
 			throw new IllegalStateException("Enter your name");
 		}
+		return true;
+	}
+
+	@Override
+	public Boolean validateEmailCheck(String email) {
+		if(email.isBlank()) {
+			throw new IllegalStateException("Enter your email");
+		}
+		return true;
+		
+		
 	}
 	
 	@Override
