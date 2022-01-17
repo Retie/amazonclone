@@ -5,19 +5,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import clone.amazon.domain.Member;
 import clone.amazon.service.MemberService;
@@ -46,7 +41,7 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "/join")
-	public String join(HttpServletRequest request, HttpServletResponse response) {
+	public @ResponseBody String join(HttpServletRequest request, HttpServletResponse response) {
 
 		log.info("joinController ok...");
 
@@ -54,17 +49,10 @@ public class MemberController {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-
-		if(!memberService.validateNameCheck(name)) {
-			
-		} else if(memberService.validateNameCheck(name)) {
-			member.setName(name);
-		}
-
-		if(memberService.validateEmailCheck(email)) {
-			
-		}
-		
+		System.out.println(" name :::: "  + name);
+		System.out.println(" email :::: "  + email);
+		System.out.println(" password :::: " + password);
+		member.setName(name);
 		member.setEmail(email);
 		member.setPassword(password);
 		
@@ -73,7 +61,7 @@ public class MemberController {
 		/*
 		 * if (result.hasErrors()){ return "members/memberJoin"; }
 		 */
-		return "redirect:/";
+		return "success";
 	}
 	
 	@GetMapping(value = "/login")
