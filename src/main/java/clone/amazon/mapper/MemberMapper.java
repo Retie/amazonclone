@@ -32,6 +32,9 @@ public interface MemberMapper {
 	@Select("SELECT name FROM member WHERE name = #{name}")
 	@ResultMap("memberMap")
 	String findByName(@Param("name") String name);
+
+	@Select("SELECT * FROM member WHERE email = #{member.email}")
+	Member emailCheck(@Param("member") Member member);
 	
 	
 	/*

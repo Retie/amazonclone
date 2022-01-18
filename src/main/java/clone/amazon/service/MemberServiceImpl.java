@@ -37,5 +37,8 @@ public class MemberServiceImpl implements MemberService {
 		return memberMapper.findByName(name);
 	}
 	
-
+	@Override
+	public Member emailCheck(Member member) {
+		return memberMapper.emailCheck(member);
+	}
 }

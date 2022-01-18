@@ -14,6 +14,8 @@ public interface MemberService {
 	Member findById(Long id);
 
 	String findByName(String name);
+
+	Member emailCheck(Member member);
 	
 
 }

@@ -64,6 +64,23 @@ public class MemberController {
 		return "success";
 	}
 	
+	@ResponseBody
+	@PostMapping(value="")
+	public String emailCheck(Member member) {
+		//SELECT * FROM member WHERE email = #{email};
+		
+		Member savedMember = memberService.emailCheck(member);
+		String message = null;
+		
+		if(savedMember == null) {
+			message = "success";
+		} else {
+			message = "fail";
+		}
+		
+		return message;
+	}
+	
 	@GetMapping(value = "/login")
 	public String loginPage() {
 		return "members/loginForm";
