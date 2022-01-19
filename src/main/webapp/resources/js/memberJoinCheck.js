@@ -19,18 +19,23 @@ function joinCheck(){
 	
 	console.log("email.value :: " + email.value); // = $("#email").val()
 	
-	
+	/* name null Check */
 	if(name.value == ""){
 		$('#name-missing-alert').show();	
 		name.focus();
 		return false;
+	} else {
+		$('#name-missing-alert').hide();
 	};
 	
+	/* email null Check */
 	if(email.value == ""){
 		$('#email-missing-alert').show();
 		email.focus();
 		return false;
-	}
+	} else {
+		$('#email-missing-alert').hide();
+	};
 	
 	/* regEmail Check */
 	if(regEmail.test(email.value) === false){
@@ -38,14 +43,54 @@ function joinCheck(){
 		$('#invalid-email-alert').show();
 		email.focus();
 		return false;
-	}
+	} else {
+		$('#invalid-email-alert').hide();
+	};
 	
 	/* Email Duplicate Check */
 /*	if(){
 		$('#email-invalid-claim-alert').show();
 		email.focus();
 		return false;
-	}*/
+	}; */
+	
+	/* password null Check */
+	if(password.value == ""){
+		$('#password-missing-alert').show();	
+		password.focus();
+		return false;
+	} else {
+		$('#password-missing-alert').hide();
+	};
+	
+	/* regPass Check */
+	if(regPwd.test(password.value) === false){
+		$('#invalid-password-alert').show();
+		password.focus();
+		return false;
+	} else {
+		$('#invalid-password-alert').hide();
+	};
+	
+	/* pwdCheck null Check */
+	if(pwdCheck.value == ""){
+		$('#passwordCheck-missing-alert').show();	
+		pwdCheck.focus();
+		return false;
+	} else {
+		$('#passwordCheck-missing-alert').hide();
+	};
+	
+	/* pwdCheck == password? */
+	if(pwdCheck.value !== password.value){
+		$('#password-mismatch-alert').show();	
+		pwdCheck.focus();
+		return false;
+	} else {
+		$('#password-mismatch-alert').hide();
+	};
+	
+	
 	
 	var joinCheckAjax = {}; //joinCheck ajax 성공 여부
 	//ajax - joinCheck(); -> 한 function 안에 다른 url을 지닌 ajax 2개를 보낼수 있나??
@@ -68,6 +113,7 @@ function joinCheck(){
                 flag = false;
                 
             } else if(responseData == 'success'){
+				$('#email-invalid-claim-alert').hide();
 				console.log("responseData success...");
 				$.ajax({
 					url: "/member/join",
