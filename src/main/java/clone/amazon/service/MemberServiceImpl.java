@@ -38,7 +38,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public Member emailCheck(Member member) {
+	public List<Member> emailCheck(Member member) {
 		return memberMapper.emailCheck(member);
 	}
 }

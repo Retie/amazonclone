@@ -34,7 +34,7 @@ public interface MemberMapper {
 	String findByName(@Param("name") String name);
 
 	@Select("SELECT * FROM member WHERE email = #{member.email}")
-	Member emailCheck(@Param("member") Member member);
+	List<Member> emailCheck(@Param("member") Member member);
 	
 	
 	/*

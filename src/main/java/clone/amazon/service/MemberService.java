@@ -15,7 +15,7 @@ public interface MemberService {
 
 	String findByName(String name);
 
-	Member emailCheck(Member member);
+	List<Member> emailCheck(Member member);
 	
 
 }

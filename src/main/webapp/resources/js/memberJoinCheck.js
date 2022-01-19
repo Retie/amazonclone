@@ -21,7 +21,6 @@ function joinCheck(){
 	
 	
 	if(name.value == ""){
-		console.log("name-missing-alert show");
 		$('#name-missing-alert').show();	
 		name.focus();
 		return false;
@@ -35,6 +34,7 @@ function joinCheck(){
 	
 	/* regEmail Check */
 	if(regEmail.test(email.value) === false){
+		$('#email-invalid-claim-alert').hide();
 		$('#invalid-email-alert').show();
 		email.focus();
 		return false;
@@ -47,11 +47,11 @@ function joinCheck(){
 		return false;
 	}*/
 	
-	
-	
-	//ajax - document.joinForm.submit();
+	var joinCheckAjax = {}; //joinCheck ajax 성공 여부
+	//ajax - joinCheck(); -> 한 function 안에 다른 url을 지닌 ajax 2개를 보낼수 있나??
+	//joinCheck 성공하면 /member/join 컨트롤러 호출
 	$.ajax({
-		url: "/member/join",
+		url: "/member/joinCheck",
 		method: "post",
 		data: {
 			name: name.value,
@@ -59,38 +59,40 @@ function joinCheck(){
 			password: password.value,
 			pwdCheck: pwdCheck.value
 		},
-		async: "true",
+		async: "true", //비동기
 		success: function(responseData){
-			console.log("responseData", responseData);
-			if(responseData=="success"){
-				window.location.href = "/"
-			}
-			
-			
-			/* 여기를 긁어왔으니 수정해야 합니다 */
-			if(responseData = 1) {
-				$that.attr('state', 'true');
-				$that.css('border', '1px solid green');
-				$('.email-alert').css('color','green').html('사용할 수 있는 이메일입니다.').stop().fadeIn();
-				$that.attr('data-state', 'true');
-			}else{
-				$that.attr('state', 'false');
-				$that.css('border', '1px solid red');
-				$('.email-alert').css('color','red').html('이미 사용중이거나 중복된 이메일 입니다.').stop().fadeIn();
-			}
-/*		}, error :  function(request,status,error){// 에러발생시 실행할 함수
-			alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-			}*/
-			
-			
-			
-		},
-		error: function(){},
-	
-		
-	})
+            if(responseData == 'fail'){ //로직 추가 시, 컨트롤러 내 message 값을 추가하여 fail 값을 추가해서 해주면 됨
+				console.log("responseData: " + responseData);
+				$('#email-invalid-claim-alert').show();
+				email.focus();
+                flag = false;
+                
+            } else if(responseData == 'success'){
+				console.log("responseData success...");
+				$.ajax({
+					url: "/member/join",
+					method: "post",
+					data: {
+						name: name.value,
+						email: email.value,
+						password: password.value,
+						pwdCheck: pwdCheck.value
+					},
+					async: "false", //동기
+					success: function(responseData){
+						console.log("responseData", responseData);
+						if(responseData=="success"){
+							window.location.href = "/"
+						}
+					},
+					error:  function(request, status, error){// 에러발생시 실행할 함수
+						alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
+						}
+		}) //ajax
+		} //else if
+		} // success: function()
+	}) //$.ajax
 	activeFunc();
-	
 }
 
 function activeFunc(){

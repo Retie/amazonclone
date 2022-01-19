@@ -35,6 +35,26 @@ public class MemberController {
 		return "members/memberList";
 	}
 	
+	@ResponseBody
+	@PostMapping(value = "/joinCheck")
+	public String joinCheck(Member member) {
+		
+		log.info("joinCheck Controller ok...");
+		
+		//SELECT * FROM member WHERE email = #{email};
+		List<Member> savedMember = memberService.emailCheck(member);
+		String message = null;
+		
+		if(savedMember.isEmpty()) {
+			message = "success";
+		} else {
+			message = "fail";
+		}
+		
+		log.info("message: " + message);
+		return message;
+	}
+	
 	@GetMapping(value = "/join")
 	public String joinPage() {
 		return "members/memberJoin";
@@ -64,22 +84,6 @@ public class MemberController {
 		return "success";
 	}
 	
-	@ResponseBody
-	@PostMapping(value="")
-	public String emailCheck(Member member) {
-		//SELECT * FROM member WHERE email = #{email};
-		
-		Member savedMember = memberService.emailCheck(member);
-		String message = null;
-		
-		if(savedMember == null) {
-			message = "success";
-		} else {
-			message = "fail";
-		}
-		
-		return message;
-	}
 	
 	@GetMapping(value = "/login")
 	public String loginPage() {
