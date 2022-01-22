@@ -87,7 +87,7 @@ public class MemberController {
 	
 	@GetMapping(value = "/login")
 	public String loginPage() {
-		return "members/loginForm";
+		return "members/memberLogin";
 	}
 	
 
