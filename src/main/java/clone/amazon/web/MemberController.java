@@ -89,7 +89,16 @@ public class MemberController {
 	public String loginPage() {
 		return "members/memberLogin";
 	}
-	
+
+	@PostMapping(value = "/login")
+	public String login() {
+
+		return "success";
+	}
+
+
+
+
 
 	@GetMapping("/{id}")
 	public String findById(Model model, @PathVariable("id") Long id) {

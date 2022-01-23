@@ -10,16 +10,8 @@
 	<div class="a-section a-spacing-base">
 		<div class="a-section">
 
-			<form name="signIn" method="post" action="https://www.amazon.com/ap/signin">
-				<input type="hidden" name="appActionToken" value="Ygtc0WvWUNhho13j2F3ffw5j2Fv7elgj3D">
+			<form name="signIn" method="post" action="/member/login">
 				<input type="hidden" name="appAction" value="SIGNIN_PWD_COLLECT">
-				<input type="hidden" name="subPageType" value="SignInClaimCollect">
-				<input type="hidden" name="openid.return_to"
-					value="ape:aHR0cHM6Ly93d3cuYW1hem9uLmNvbS8/cmVmXz1uYXZfY3VzdHJlY19zaWduaW4=">
-				<input type="hidden" name="prevRID"
-					value="ape:TVI0REhOV0JSSzNOSlZFR0I5Tlo=">
-				<input type="hidden" name="workflowState"
-					value="eyJ6aXAiOiJERUYiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiQTI1NktXIn0.Dd0iuEYxHIa8WCwDbAwSQVEU7x8jDyQxSLRa7vrs5pi9CvW1m4y4zA.IzH25dO5Aq0NsLg2.q7XaXlG9dOIXE1YnHnKTREf7UoAUZTmRpGxyY74py4UsG6Gqf7S7aY4QFnakYT-PiNaakuPkBMAvNR9Ew6uQ5kf44kwqNcPCZ09JipvzD2Bv0abQMIrxInEF9OVnufE1ItMRenGrlaBDCrcFSuLMh8A08MiMX2wLXTKVdyvxUATdFAGoProgvVercAgti3Au7oWDNQS4_DExi2SdoA2ZnBEZv8pOrJ3U8y7jTL9Na2TKPIs3_fUJCCjWN4LcOhWjksDQx6tZ8bg6GfuDgfk0_cCeIoTd411mB__qE-5Y2HBMEm4jx1U5Gah9q3dUpuyv1wAw.W-ruxsOvul7savjQFgp4IQ">
 
 				<div class="a-section">
 					<div class="a-box">
