@@ -36,7 +36,17 @@ public class MemberServiceImpl implements MemberService {
 	public String findByName(String name) {
 		return memberMapper.findByName(name);
 	}
-	
+
+	@Override
+	public String findByEmail(String email) {
+		return memberMapper.findByEmail(email);
+	}
+
+	@Override
+	public String findPassword(String email, String password) {
+		return memberMapper.findPassword(email, password);
+	}
+
 	@Override
 	public List<Member> emailCheck(Member member) {
 		return memberMapper.emailCheck(member);

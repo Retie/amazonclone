@@ -92,7 +92,7 @@ function joinCheck(){
 	
 	
 	
-	var joinCheckAjax = {}; //joinCheck ajax 성공 여부
+	var flag = true; //joinCheck ajax 성공 여부
 	//ajax - joinCheck(); -> 한 function 안에 다른 url을 지닌 ajax 2개를 보낼수 있나??
 	//joinCheck 성공하면 /member/join 컨트롤러 호출
 	$.ajax({
@@ -114,7 +114,9 @@ function joinCheck(){
                 
             } else if(responseData == 'success'){
 				$('#email-invalid-claim-alert').hide();
+				flag = true;
 				console.log("responseData success...");
+
 				$.ajax({
 					url: "/member/join",
 					method: "post",
@@ -134,11 +136,12 @@ function joinCheck(){
 					error:  function(request, status, error){// 에러발생시 실행할 함수
 						alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
 						}
-		}) //ajax
-		} //else if
+				}) //ajax
+			} //else if
 		} // success: function()
 	}) //$.ajax
 	activeFunc();
+	return flag;
 }
 
 function activeFunc(){

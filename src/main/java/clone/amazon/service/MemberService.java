@@ -12,8 +12,10 @@ public interface MemberService {
 	List<Member> findAll();
 	
 	Member findById(Long id);
-
 	String findByName(String name);
+	String findByEmail(String email);
+
+	String findPassword(String email, String password);
 
 	List<Member> emailCheck(Member member);
 	

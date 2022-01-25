@@ -11,9 +11,9 @@
 	<%@taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 </head>
 <body>
-	<div class="container">
-		Create account
-		<form name="joinForm" class="was-validated" role="form" action="/member/joinCheck" method="post">
+	<div class="container-md border mt-3">
+		<h1>Create account</h1>
+		<form name="joinForm" role="form" action="/member/joinCheck" method="post">
 		
 			<div class="form-group">
 				<label for="name">Your name</label>

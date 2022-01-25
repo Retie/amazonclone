@@ -30,38 +30,39 @@ public class MemberController {
 	@GetMapping("")
 	public String memberList(Model model) {
 		List<Member> members = memberService.findAll();
-		log.info(memberService.findAll()+"");
+		log.info(memberService.findAll() + "");
 		model.addAttribute("members", members);
 		return "members/memberList";
 	}
-	
+
 	@ResponseBody
 	@PostMapping(value = "/joinCheck")
 	public String joinCheck(Member member) {
-		
+
 		log.info("joinCheck Controller ok...");
-		
+
 		//SELECT * FROM member WHERE email = #{email};
 		List<Member> savedMember = memberService.emailCheck(member);
 		String message = null;
-		
-		if(savedMember.isEmpty()) {
+
+		if (savedMember.isEmpty()) {
 			message = "success";
 		} else {
 			message = "fail";
 		}
-		
+
 		log.info("message: " + message);
 		return message;
 	}
-	
+
 	@GetMapping(value = "/join")
 	public String joinPage() {
 		return "members/memberJoin";
 	}
-	
+
 	@PostMapping(value = "/join")
-	public @ResponseBody String join(HttpServletRequest request, HttpServletResponse response) {
+	public @ResponseBody
+	String join(HttpServletRequest request, HttpServletResponse response) {
 
 		log.info("joinController ok...");
 
@@ -69,34 +70,49 @@ public class MemberController {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(" name :::: "  + name);
-		System.out.println(" email :::: "  + email);
+		System.out.println(" name :::: " + name);
+		System.out.println(" email :::: " + email);
 		System.out.println(" password :::: " + password);
 		member.setName(name);
 		member.setEmail(email);
 		member.setPassword(password);
-		
+
 		memberService.join(member);
-		
+
 		/*
 		 * if (result.hasErrors()){ return "members/memberJoin"; }
 		 */
 		return "success";
 	}
-	
-	
+
+
 	@GetMapping(value = "/login")
 	public String loginPage() {
 		return "members/memberLogin";
 	}
 
+	@ResponseBody
 	@PostMapping(value = "/login")
-	public String login() {
+	public String login(Model model, @PathVariable("email") String email, @PathVariable("password") String password) {
 
-		return "success";
+		//query에서 입력받은 이메일과 매칭되는 이메일을 찾아서 savedEmail에 저장
+		String savedEmail = memberService.findByEmail(email);
+		String savedPassword = memberService.findPassword(email, password);
+		log.info("savedEmail: " + savedEmail);
+		log.info("savedPassword: " + savedPassword);
+
+
+		//success/fail -> ajax 처리
+		if (email == savedEmail && password == savedPassword) {
+			return "success";
+		} else if (email != savedEmail) {
+			return "plzCheckEmail";
+		} else if (password != savedPassword) {
+			return "plzCheckPassword";
+		} else {
+			return "fail";
+		}
 	}
-
-
 
 
 

@@ -22,14 +22,21 @@ public interface MemberMapper {
 	List<Member> findAll();
 
 	
-	@Select("SELECT * FROM member WHERE id = #{id}")
+	@Select("SELECT * FROM member WHERE id = #{member.id}")
 	@Results(id = "memberMap", value = {
 			@Result(property = "phoneNum", column = "phone_num"),
 			@Result(property = "regDate", column = "reg_date") })
 	Member findById(@Param("id") Long id);
 
-	
-	@Select("SELECT name FROM member WHERE name = #{name}")
+	@Select("SELECT email FROM member WHERE email = #{member.email}")
+	@ResultMap("memberMap")
+	String findByEmail(@Param("email") String email);
+
+	@Select("SELECT password FROM member WHERE email = #{member.email}")
+	@ResultMap("memberMap")
+	String findPassword(@Param("email") String email, @Param("password") String password);
+
+	@Select("SELECT name FROM member WHERE name = #{member.name}")
 	@ResultMap("memberMap")
 	String findByName(@Param("name") String name);
 
