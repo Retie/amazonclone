@@ -39,12 +39,12 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public String findByEmail(String email) {
-		return memberMapper.findByEmail(email);
+		return memberMapper.findByEmail(email).getEmail();
 	}
 
 	@Override
-	public String findPassword(String email, String password) {
-		return memberMapper.findPassword(email, password);
+	public String findPassword(String email) {
+		return memberMapper.findPassword(email).getPassword();
 	}
 
 	@Override

@@ -24,3 +24,12 @@ CREATE SEQUENCE member_id_seq
 	
 INSERT INTO member(NAME, email, PASSWORD, phone_num, address)
 VALUES("retie", "retie@a", "1234", "01011111111", "address");
+INSERT INTO member(NAME, email, PASSWORD, phone_num, address)
+VALUES("master", "aaa@aaa.com", "123", "01011111111", "address");
+
+
+-- findByEmail check
+SELECT email FROM member WHERE email like "aaa@aaa.com";
+
+-- findPassword check
+SELECT password FROM member WHERE email LIKE "aaa@aaa.com";

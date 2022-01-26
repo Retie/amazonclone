@@ -15,7 +15,7 @@ public interface MemberService {
 	String findByName(String name);
 	String findByEmail(String email);
 
-	String findPassword(String email, String password);
+	String findPassword(String email);
 
 	List<Member> emailCheck(Member member);
 	

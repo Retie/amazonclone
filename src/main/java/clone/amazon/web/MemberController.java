@@ -93,22 +93,27 @@ public class MemberController {
 
 	@ResponseBody
 	@PostMapping(value = "/login")
-	public String login(Model model, @PathVariable("email") String email, @PathVariable("password") String password) {
+	public String login(HttpServletRequest request, HttpServletResponse response) {
+		log.info("loginController ok...");
+
+		String email = request.getParameter("email"); //값은 받음
+		String password = request.getParameter("password");
+		
 
 		//query에서 입력받은 이메일과 매칭되는 이메일을 찾아서 savedEmail에 저장
 		String savedEmail = memberService.findByEmail(email);
-		String savedPassword = memberService.findPassword(email, password);
 		log.info("savedEmail: " + savedEmail);
-		log.info("savedPassword: " + savedPassword);
 
+		//savedEmail의 비번을 찾아 savedPassword에 저장
+		//SELECT password FROM member WHERE email = #{member.email}
+		String savedPassword = memberService.findPassword(savedEmail);
+		log.info("savedPassword: " + savedPassword);
 
 		//success/fail -> ajax 처리
 		if (email == savedEmail && password == savedPassword) {
 			return "success";
-		} else if (email != savedEmail) {
-			return "plzCheckEmail";
 		} else if (password != savedPassword) {
-			return "plzCheckPassword";
+			return "plzCheckPwd"; //성공 확인
 		} else {
 			return "fail";
 		}

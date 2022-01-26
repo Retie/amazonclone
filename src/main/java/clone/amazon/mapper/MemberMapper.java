@@ -28,13 +28,13 @@ public interface MemberMapper {
 			@Result(property = "regDate", column = "reg_date") })
 	Member findById(@Param("id") Long id);
 
-	@Select("SELECT email FROM member WHERE email = #{member.email}")
+	@Select("SELECT email FROM member WHERE email LIKE #{email}")
 	@ResultMap("memberMap")
-	String findByEmail(@Param("email") String email);
+	Member findByEmail(@Param("email") String email); //String 타입으로 바로 못받는데.. 왜지?
 
-	@Select("SELECT password FROM member WHERE email = #{member.email}")
+	@Select("SELECT password FROM member WHERE email LIKE #{email}")
 	@ResultMap("memberMap")
-	String findPassword(@Param("email") String email, @Param("password") String password);
+	Member findPassword(@Param("email") String email); //String 타입으로 바로 못받는데.. 왜지?22
 
 	@Select("SELECT name FROM member WHERE name = #{member.name}")
 	@ResultMap("memberMap")
