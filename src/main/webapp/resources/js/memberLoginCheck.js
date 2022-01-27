@@ -14,6 +14,7 @@ function loginCheck() {
         return false;
     } else {
         $("#auth-email-missing-alert").hide();
+        $("#auth-password-incorrect-alert").hide();
     }
 
     if (password.value == "") {
@@ -22,6 +23,7 @@ function loginCheck() {
         return false;
     } else {
         $("#auth-password-missing-alert").hide();
+        $("#auth-password-incorrect-alert").hide();
     }
 
 
@@ -42,8 +44,6 @@ function loginCheck() {
                 flag = false;
                 console.log("responseData: plzCheckPwd, flag: " + flag)
                 $("#auth-password-incorrect-alert").show();
-            } else {
-                $("#auth-password-incorrect-alert").hide();
             }
         }, error: function (request, status, error) {// 에러발생시 실행할 함수
             alert("code:" + request.status + "\n" +

@@ -11,9 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <div class="a-section a-spacing-base">
 		<div class="container-md border mt-3">
-
 			<form name="signIn" method="post" action="/member/login">
-
 				<div class="a-section">
 					<div class="a-box">
 						<div class="a-box-inner a-padding-extra-large">
@@ -66,7 +64,6 @@
 
 						</div>
 					</div>
-				</div>
 			</form>
 		</div>
 

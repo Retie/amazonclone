@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -96,23 +97,28 @@ public class MemberController {
 	public String login(HttpServletRequest request, HttpServletResponse response) {
 		log.info("loginController ok...");
 
+		HttpSession session = request.getSession();
+
 		String email = request.getParameter("email"); //값은 받음
 		String password = request.getParameter("password");
 		
 
 		//query에서 입력받은 이메일과 매칭되는 이메일을 찾아서 savedEmail에 저장
 		String savedEmail = memberService.findByEmail(email);
-		log.info("savedEmail: " + savedEmail);
+		log.info("email: " + email + ", savedEmail: " + savedEmail);
 
 		//savedEmail의 비번을 찾아 savedPassword에 저장
 		//SELECT password FROM member WHERE email = #{member.email}
 		String savedPassword = memberService.findPassword(savedEmail);
-		log.info("savedPassword: " + savedPassword);
+		log.info("password: " + password + ", savedPassword: " + savedPassword);
 
 		//success/fail -> ajax 처리
-		if (email == savedEmail && password == savedPassword) {
+		if (email.equals(savedEmail) && password.equals(savedPassword)) {
+			session.setAttribute(savedEmail, email);
+			log.info("session.setAttribute ok... ");
+			log.info("login success");
 			return "success";
-		} else if (password != savedPassword) {
+		} else if (!password.equals(savedPassword)) {
 			return "plzCheckPwd"; //성공 확인
 		} else {
 			return "fail";
