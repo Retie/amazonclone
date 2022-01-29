@@ -36,6 +36,10 @@ public interface MemberMapper {
 	@ResultMap("memberMap")
 	Member findPassword(@Param("email") String email); //String 타입으로 바로 못받는데.. 왜지?22
 
+	@Select("SELECT name FROM member WHERE email LIKE #{email}")
+	@ResultMap("memberMap")
+	Member findName(@Param("email") String email);
+
 	@Select("SELECT name FROM member WHERE name = #{member.name}")
 	@ResultMap("memberMap")
 	String findByName(@Param("name") String name);

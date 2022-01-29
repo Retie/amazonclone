@@ -112,10 +112,15 @@ public class MemberController {
 		String savedPassword = memberService.findPassword(savedEmail);
 		log.info("password: " + password + ", savedPassword: " + savedPassword);
 
+		//savedEmail의 이름을 찾아 savedName에 저장
+		String savedName = memberService.findName(savedEmail);
+		log.info("savedName: " + savedName);
+
 		//success/fail -> ajax 처리
 		if (email.equals(savedEmail) && password.equals(savedPassword)) {
-			session.setAttribute(savedEmail, email);
-			log.info("session.setAttribute ok... ");
+			session.setAttribute("sessionName", savedName);
+			session.setAttribute("sessionEmail", savedEmail);
+			log.info("session.setAttribute ok... " + (String)session.getAttribute("sessionEmail"));
 			log.info("login success");
 			return "success";
 		} else if (!password.equals(savedPassword)) {

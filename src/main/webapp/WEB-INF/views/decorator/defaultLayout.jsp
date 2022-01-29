@@ -18,7 +18,16 @@
 </head>
 
 <body>
-<% String[] locale = Locale.getISOCountries(); %>
+<%  String[] locale = Locale.getISOCountries();
+    String sessionName = (String) session.getAttribute("sessionName");
+    String memberName = "";
+
+    if(sessionName != null){
+        memberName = sessionName;
+    } else {
+        memberName = "Sign in";
+    }
+%>
 <!-- header -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/main">Amazon</a>
@@ -39,7 +48,7 @@
     
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Hello, Sign in<br>Account & Lists
+          Hello, <%=memberName%><br>Account & Lists
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
         <button class="btn btn-outline-success my-3 my-sm-0" onclick="location.href='/member/login'">Sign in</button>

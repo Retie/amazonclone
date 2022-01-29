@@ -48,6 +48,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public String findName(String email) {
+		return memberMapper.findName(email).getName();
+	}
+
+	@Override
 	public List<Member> emailCheck(Member member) {
 		return memberMapper.emailCheck(member);
 	}
