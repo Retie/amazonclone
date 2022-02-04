@@ -1,8 +1,21 @@
 package clone.amazon.domain;
 
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Getter @Setter
 public class Category {
-    public String computers_accs;
-    public String videoGames;
-    public String baby;
-    public String toys_games;
+    @Id @GeneratedValue
+    private long cateID;
+
+    private String cateName;
+    private String cateGroup;
+    private long cateLv;
+    private long cateLvDetail;
+
+    // cateGroup 참조하는 외래키??
 }

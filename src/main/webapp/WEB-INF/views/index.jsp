@@ -94,7 +94,8 @@
         <div class="col">
             <div class="container-sm">
                 <span><h5>Sign in for the best experience</h5></span>
-                <button type="button" class="btn btn-warning px-lg-5 mb-5">Sign in securely</button>
+                <button type="button" class="btn btn-warning px-lg-5 mb-5" onclick="location.href='/member/login'">
+                    Sign in securely</button>
                 <img src="/resources/img/orders/shipProducts.PNG"/>
             </div>
         </div>

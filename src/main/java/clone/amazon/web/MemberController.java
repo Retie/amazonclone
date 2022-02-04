@@ -71,9 +71,6 @@ public class MemberController {
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		System.out.println(" name :::: " + name);
-		System.out.println(" email :::: " + email);
-		System.out.println(" password :::: " + password);
 		member.setName(name);
 		member.setEmail(email);
 		member.setPassword(password);
@@ -144,9 +141,6 @@ public class MemberController {
 		System.out.println(memberService.findByName(name) + "found");
 	}
 	
-	/*
-	 * @GetMapping("/{name}") public Member findByName(@PathVariable("name") String
-	 * name) { return memberService.findByName(name); }
-	 */
+
 
 }
