@@ -601,7 +601,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container, .container-sm, .container-md, .container-lg, .container-xl {
-    max-width: 1140px;
+    max-width: 1500px;
   }
 }
 
@@ -6496,10 +6496,10 @@ a.close.disabled {
   align-items: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 15%;
+  width: 10%;
   color: #fff;
   text-align: center;
-  opacity: 0.5;
+  opacity: 0.2;
   transition: opacity 0.15s ease;
 }
 
@@ -6516,7 +6516,7 @@ a.close.disabled {
   color: #fff;
   text-decoration: none;
   outline: 0;
-  opacity: 0.9;
+  opacity: 0.5;
 }
 
 .carousel-control-prev {
