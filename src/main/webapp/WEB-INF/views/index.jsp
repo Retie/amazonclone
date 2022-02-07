@@ -74,8 +74,10 @@
                 <%--                <p>출판사 : ${item.publisher}</p>--%>
                 <%--            </c:forEach>--%>
                 <figure class="figure">
-                    <img src="/resources/img/orders/ct1.PNG" class="figure-img img-fluid rounded" alt="ct1">
-                    <figcaption class="figure-caption">Computers & Accessories</figcaption>
+                    <a href="/orders?cateID=${cateIDvalue}">
+                        <img src="/resources/img/orders/ct1.PNG" class="figure-img img-fluid rounded" alt="ct1">
+                        <figcaption class="figure-caption">Computers & Accessories</figcaption>
+                    </a>
                 </figure>
                 <figure class="figure">
                     <img src="/resources/img/orders/ct2.PNG" class="figure-img img-fluid rounded" alt="ct2">
@@ -95,7 +97,8 @@
             <div class="container-sm">
                 <span><h5>Sign in for the best experience</h5></span>
                 <button type="button" class="btn btn-warning px-lg-5 mb-5" onclick="location.href='/member/login'">
-                    Sign in securely</button>
+                    Sign in securely
+                </button>
                 <img src="/resources/img/orders/shipProducts.PNG"/>
             </div>
         </div>

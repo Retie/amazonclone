@@ -10,7 +10,11 @@ public class WebController {
 	@GetMapping(value = "/")
 	public String jspCheck(Model model) {
 		System.out.println("index.jsp test");
+
 		model.addAttribute("name", "WebController");
+		// 작성중 //
+		model.addAttribute("cateIDvalue", "1");
+
 		return "index";
 	}
 	

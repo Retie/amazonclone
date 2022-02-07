@@ -10,9 +10,10 @@ import javax.persistence.Id;
 @Getter @Setter
 public class Category {
     @Id @GeneratedValue
-    private long cateID;
+    private Long cateID;
 
     private String cateName;
+    private String cateDesc;
     private String cateGroup;
     private long cateLv;
     private long cateLvDetail;
