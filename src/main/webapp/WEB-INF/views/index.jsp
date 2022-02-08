@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE HTML>
@@ -66,31 +67,17 @@
         <div class="col">
             <div class="container-sm" id="ct">
                 <span><h5>Shop by Category</h5></span>
-                <%--                나중에 jstl로 바꿔보기
-                                 <c:forEach var="item" items="${items}" begin="0" end="3" step="1">--%>
-                <%--                <p>번호 : ${status.index}</p>--%>
-                <%--                <p>책명 : ${item.name}</p>--%>
-                <%--                <p>저자 : ${item.author}</p>--%>
-                <%--                <p>출판사 : ${item.publisher}</p>--%>
-                <%--            </c:forEach>--%>
-                <figure class="figure">
-                    <a href="/orders?cateID=${cateIDvalue}">
-                        <img src="/resources/img/orders/ct1.PNG" class="figure-img img-fluid rounded" alt="ct1">
-                        <figcaption class="figure-caption">Computers & Accessories</figcaption>
-                    </a>
-                </figure>
-                <figure class="figure">
-                    <img src="/resources/img/orders/ct2.PNG" class="figure-img img-fluid rounded" alt="ct2">
-                    <figcaption class="figure-caption">Video Games</figcaption>
-                </figure>
-                <figure class="figure">
-                    <img src="/resources/img/orders/ct3.PNG" class="figure-img img-fluid rounded" alt="ct3">
-                    <figcaption class="figure-caption">Baby</figcaption>
-                </figure>
-                <figure class="figure">
-                    <img src="/resources/img/orders/ct4.PNG" class="figure-img img-fluid rounded" alt="ct4">
-                    <figcaption class="figure-caption">Toys & Games</figcaption>
-                </figure>
+                <c:forEach var="category" items="${category}" begin="0">
+                    <c:if test="${category.cateLv == 1}">
+                        <figure class="figure">
+                            <a href="/orders?cateID=${category.cateID}">
+                                <img src="/resources/img/orders/ct${category.cateID}.PNG"
+                                     class="figure-img img-fluid rounded" alt="ct">
+                                <figcaption class="figure-caption">${category.cateName}</figcaption>
+                            </a>
+                        </figure>
+                    </c:if>
+                </c:forEach>
             </div>
         </div>
         <div class="col">
