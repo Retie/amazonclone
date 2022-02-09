@@ -4,7 +4,7 @@ import clone.amazon.domain.Category;
 
 import java.util.List;
 
-public interface OrderService {
+public interface CategoryService {
     List<Category> findAll();
     Category findByCTID(Long cateID);
     Category findByCTName(String cateName);

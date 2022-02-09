@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 @Mapper
-public interface OrderMapper {
+public interface CategoryMapper {
 
     @Select("SELECT * FROM category WHERE cate_ID = #{cateID}")
     @Results(id = "categoryMap", value = {

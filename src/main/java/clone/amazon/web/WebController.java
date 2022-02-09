@@ -1,7 +1,7 @@
 package clone.amazon.web;
 
 import clone.amazon.domain.Category;
-import clone.amazon.service.OrderService;
+import clone.amazon.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,13 +15,13 @@ import java.util.List;
 public class WebController {
 
 	@Autowired
-	private OrderService orderService;
+	private CategoryService categoryService;
 
 	@GetMapping(value = "/")
 	public String jspCheck(Model model) {
 		System.out.println("index.jsp test");
 
-		List<Category> category = orderService.findAll();
+		List<Category> category = categoryService.findAll();
 		model.addAttribute("name", "WebController");
 		// 작성중 //
 		model.addAttribute("category", category);
