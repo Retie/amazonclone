@@ -13,8 +13,7 @@ public class MemberControllerTest {
     @Test
     @DisplayName("로그인 확인")
     public void 로그인() throws Exception {
-        //Given
-        Member member = new Member("");
+        //GivenMember member = new Member("");
         //When
 
         //then

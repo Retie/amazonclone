@@ -7,7 +7,7 @@
     <title>Hello</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-<body>hello, 이 컨트롤러의 NAME은 ${name} 입니다.
+<body>
 <div class="container-xl m-auto">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -38,22 +38,14 @@
         <div class="col">
             <div class="container-sm" id="ct1">
                 <span><h5>Gaming accessories</h5></span>
-                <figure class="figure">
-                    <img src="/resources/img/orders/ct1-1.PNG" class="figure-img img-fluid rounded" alt="ct1-1">
-                    <figcaption class="figure-caption">Headsets</figcaption>
-                </figure>
-                <figure class="figure">
-                    <img src="/resources/img/orders/ct1-2.PNG" class="figure-img img-fluid rounded" alt="ct1-1">
-                    <figcaption class="figure-caption">Keyboards</figcaption>
-                </figure>
-                <figure class="figure">
-                    <img src="/resources/img/orders/ct1-3.PNG" class="figure-img img-fluid rounded" alt="ct1-1">
-                    <figcaption class="figure-caption">Computer mice</figcaption>
-                </figure>
-                <figure class="figure">
-                    <img src="/resources/img/orders/ct1-4.PNG" class="figure-img img-fluid rounded" alt="ct1-1">
-                    <figcaption class="figure-caption">Chairs</figcaption>
-                </figure>
+                <c:forEach var="category" items="${category}" begin="0">
+                    <c:if test="${category.cateLv == 2}">
+                        <figure class="figure">
+                            <img src="/resources/img/orders/ct${category.cateID}.PNG" class="figure-img img-fluid rounded" alt="ct1-1">
+                            <figcaption class="figure-caption">${category.cateName}</figcaption>
+                        </figure>
+                    </c:if>
+                </c:forEach>
             </div>
             <a href="#">See more</a>
         </div>

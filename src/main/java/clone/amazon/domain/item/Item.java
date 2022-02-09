@@ -12,15 +12,15 @@ import javax.persistence.ManyToMany;
 public abstract class Item {
     @Id @GeneratedValue
     @Column(name = "item_id")
-    private Long id;
+    private Long itemID;
 
-    private String name;
-    private int price;
-    private String description;
+    private String itemName;
+    private int itemPrice;
+    private String itemDesc;
 
-    private int star;
-    private int starCount;
+    private int itemStar;
+    private int itemStarCount;
 
-    private int stockQuantity;
+    private int itemStockQuantity;
 
 }

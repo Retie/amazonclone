@@ -2,6 +2,7 @@ USE amazon;
 
 DROP TABLE member;
 DROP TABLE category;
+DROP TABLE item;
 
 CREATE TABLE member (
 	id INT auto_increment primary KEY,
@@ -26,8 +27,16 @@ CREATE TABLE category (
 	cate_lv INT NOT NULL,
 	cate_lv_detail INT
 	);
-
-
+	
+CREATE TABLE item (
+	item_ID INT AUTO_INCREMENT PRIMARY KEY,
+	item_name VARCHAR(300) NOT NULL,
+	item_price INT,
+	item_desc VARCHAR(500),
+	item_star INT, -- max 5
+	item_star_count INT,
+	item_stock_quantity int
+	);
 
 -- TEST DATAS --
 
@@ -60,9 +69,27 @@ VALUES("Baby", "Shop top baby toys, clothing, formula, diaper, and maternity pro
 INSERT INTO category(cate_name, cate_desc, cate_group, cate_lv)
 VALUES("Toys & Games", "Shop action figures, arts and crafts, dolls, puzzles, learning toys and more", "D", 1);
 
-
-
-
+-- item insert(star, star_count X)
+INSERT INTO item(item_name, item_price, item_desc, item_stock_quantity)
+VALUES("Targeal 4 Mode 7.1 Surround Sound PC Gaming Headset for PS4/5 Laptop Tablet Mobile, On Ear Wired USB Gaming Headphones, Omni-Directional Noise Reduction Microphone, Colorful RGB Light,SKY-701",
+		29.99,
+		"【MULTI-PLATFORM COMPATIBLE】This 7.1 surround sound gaming headset Supports PS4, PC, Laptop, PSP, Tablet, iPad, Computer, Mobile Phone and other devices with USB Type C jack.Stereo Surround gaming headset is equipped with a USB Type C cable adapter and it is compatible with multiple devices.",
+		50);
+INSERT INTO item(item_name, item_price, item_desc, item_stock_quantity)
+VALUES("BINNUNE 2.4G/Bluetooth Wireless Gaming Headset with Microphone for PS4 PS5 Playstation 4 5, 48 Hours Playtime, PC USB Gamer Headphones with Mic for Laptop Computer",
+		39.99,
+		"[Dual Wireless]Support Bluetooth 5.0+2.4G wireless Dual Mode. Advanced Bluetooth 5.0 wireless technology for on- the -go connectivity, 2.4G wireless ensures a fast connection for seamless audio.",
+		50);
+INSERT INTO item(item_name, item_price, item_desc, item_stock_quantity)
+VALUES("Razer Kraken X Ultralight Gaming Headset: 7.1 Surround Sound - Lightweight Aluminum Frame - Bendable Cardioid Microphone - for PC, PS4, PS5, Switch, Xbox One, Xbox Series X|S, Mobile - Black",
+		27.99,
+		"Immersive, 7.1 Surround Sound for Positional Audio: Outfitted with custom-tuned 40 millimeter drivers, capable of software-enabled surround sound when used for PC gaming only (download code slip inside the box)",
+		50);
+		INSERT INTO item(item_name, item_price, item_desc, item_stock_quantity)
+VALUES("BENGOO G9000 Stereo Gaming Headset for PS4 PC Xbox One PS5 Controller, Noise Cancelling Over Ear Headphones with Mic, LED Light, Bass Surround, Soft Memory Earmuffs for Laptop Mac Nintendo NES Games",
+		49.99,
+		"【Multi-Platform Compatible】Support PlayStation 4, New Xbox One, PC, Nintendo 3DS, Laptop, PSP, Tablet, iPad, Computer, Mobile Phone. Please note you need an extra Microsoft Adapter (Not Included) when connect with an old version Xbox One controller.",
+		50);
 
 -- SEQUENCES --
 
@@ -92,5 +119,8 @@ SELECT email FROM member WHERE email like "aaa@aaa.com";
 
 -- findPassword check
 SELECT password FROM member WHERE email LIKE "aaa@aaa.com";
+
+-- findByCTID check
+SELECT * FROM category WHERE cate_id = 1;
 
 COMMIT;

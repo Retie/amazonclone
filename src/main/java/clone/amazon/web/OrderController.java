@@ -27,10 +27,16 @@ public class OrderController {
         log.info("cateID: " + cateID);
 
         String cateName = orderService.findByCTID(cateID).getCateName();
-        log.info("cateName: " + cateName);
+        String cateDesc = orderService.findByCTID(cateID).getCateDesc();
+        List<Category> category = orderService.findAll();
 
-        model.addAttribute("cateIDvalue", cateID);
+        log.info("cateName: " + cateName);
+        log.info("cateDesc: " + cateDesc);
+        log.info("category: " + category);
+
         model.addAttribute("cateName", cateName);
+        model.addAttribute("cateDesc", cateDesc);
+        model.addAttribute("category", category);
         return "orders/categoryMain";
     }
 
