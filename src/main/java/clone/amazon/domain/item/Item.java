@@ -22,5 +22,6 @@ public abstract class Item {
     private int itemStarCount;
 
     private int itemStockQuantity;
+    private String cateName;
 
 }
