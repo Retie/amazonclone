@@ -68,9 +68,19 @@ VALUES("Chairs", "A", 2);
 -- B그룹 1Lv
 INSERT INTO category(cate_name, cate_desc, cate_group, cate_lv)
 VALUES("Video Games", "Shop video games for Nintendo, PlayStation, Xbox and more", "B", 1);
+
+-- B그룹 detail (2Lv)
+INSERT INTO category(cate_name, cate_group, cate_lv)
+VALUES("Games", "B", 2);
+
 -- C그룹 1Lv
 INSERT INTO category(cate_name, cate_desc, cate_group, cate_lv)
 VALUES("Baby", "Shop top baby toys, clothing, formula, diaper, and maternity products", "C", 1);
+
+-- C그룹 detail (2Lv)
+INSERT INTO category(cate_name, cate_group, cate_lv)
+VALUES("Wipes", "C", 2);
+
 -- D그룹 1Lv
 INSERT INTO category(cate_name, cate_desc, cate_group, cate_lv)
 VALUES("Toys & Games", "Shop action figures, arts and crafts, dolls, puzzles, learning toys and more", "D", 1);
@@ -152,12 +162,37 @@ VALUES("Razer DeathAdder Essential Gaming Mouse: 6400 DPI Optical Sensor - 5 Pro
 		"Computer mice");
 		
 INSERT INTO item(item_name, item_price, item_desc, item_stock_quantity, cate_name)
+VALUES("Pokémon Legends: Arceus - Nintendo Switch",
+		63.75,
+		"Study Pokémon behaviors, sneak up on them, and toss a well-aimed Poké Ball to catch them",
+		50,
+		"Games");		
+INSERT INTO item(item_name, item_price, item_desc, item_stock_quantity, cate_name)
+VALUES("Mario Party Superstars - Nintendo Switch",
+		55.99,
+		"Bring the party on 5 classic boards from the Nintendo 64 Mario Party games",
+		50,
+		"Games");		
+
+INSERT INTO item(item_name, item_price, item_desc, item_stock_quantity, cate_name)
+VALUES("Baby Wipes, Huggies Natural Care Sensitive Baby Diaper Wipes, Unscented, Hypoallergenic, 12 Flip-Top Packs (768 Wipes Total)",
+		33.83,
+		"12 flip-top packs of 64 Huggies Natural Care Sensitive Baby Wipes, Unscented (768 wipes total); National Eczema Association Seal of Approval",
+		50,
+		"Wipes");
+INSERT INTO item(item_name, item_price, item_desc, item_stock_quantity, cate_name)
+VALUES("Baby Wipes, Pampers Sensitive Water Based Baby Diaper Wipes, Hypoallergenic and Unscented, 8 Refill Packs (Tub Not Included), 72 each, Pack of 8 (Packaging May Vary)",
+		19.53,
+		"Pampers Sensitive wipes are clinically proven for sensitive skin",
+		50,
+		"Wipes");
+		
+INSERT INTO item(item_name, item_price, item_desc, item_stock_quantity, cate_name)
 VALUES("",
 		,
 		"",
-		50);		
-		
-		
+		50,
+		"");
 		
 -- SEQUENCES --
 
@@ -191,6 +226,11 @@ SELECT password FROM member WHERE email LIKE "aaa@aaa.com";
 -- findByCTID check
 SELECT * FROM category WHERE cate_id = 1;
 
+-- itemMapper - findByCTName test
+SELECT * FROM item WHERE cate_name LIKE "Headsets";
 
+
+SELECT category.cate_name, category.cate_group, item.item_ID, item.item_name, item.item_price, item.item_star, item.item_star_count
+FROM category JOIN item ON category.cate_lv = 2 WHERE category.cate_name = item.cate_name;
 
 COMMIT;

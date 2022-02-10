@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Getter @Setter
-public abstract class Item {
+public class Item {
     @Id @GeneratedValue
     @Column(name = "item_id")
     private Long itemID;

@@ -1,7 +1,9 @@
 package clone.amazon.web;
 
 import clone.amazon.domain.Category;
+import clone.amazon.domain.item.Item;
 import clone.amazon.service.CategoryService;
+import clone.amazon.service.ItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,9 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private ItemService itemService;
+
     @GetMapping("")
     public String categoryMain(@RequestParam Long cateID, Model model) {
         log.info("categoryMain controller ok...");
@@ -27,7 +32,10 @@ public class CategoryController {
 
         String cateName = categoryService.findByCTID(cateID).getCateName();
         String cateDesc = categoryService.findByCTID(cateID).getCateDesc();
+        String cateGroup = categoryService.findByCTID(cateID).getCateGroup();
+
         List<Category> category = categoryService.findAll();
+        log.info("findAll_withCateGroup: " + itemService.findAllWithCateGroup());
 
         log.info("cateName: " + cateName);
         log.info("cateDesc: " + cateDesc);
@@ -36,6 +44,7 @@ public class CategoryController {
         model.addAttribute("cateName", cateName);
         model.addAttribute("cateDesc", cateDesc);
         model.addAttribute("category", category);
+        //model.addAttribute("item", item);
         return "orders/categoryMain";
     }
 

@@ -38,7 +38,7 @@
         <div class="col">
             <div class="container-sm" id="ct1">
                 <span><h5>Gaming accessories</h5></span>
-                <c:forEach var="category" items="${category}" begin="0">
+                <c:forEach var="category" items="${category}" begin="0" end="4">
                     <c:if test="${category.cateLv == 2}">
                         <figure class="figure">
                             <img src="/resources/img/orders/ct${category.cateID}.PNG" class="figure-img img-fluid rounded" alt="ct1-1">
