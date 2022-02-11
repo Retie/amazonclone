@@ -22,6 +22,7 @@
     <div class="container-fluid my-3">
         <!-- item list를 불러오도록 편집! -->
         <c:set var="categoryGroup" value="${cateGroup}"/>
+        <c:out value="${categoryGroup}"/>
         <c:forEach var="item" items="${item}" begin="0">
             <c:if test="${item.cateGroup == categoryGroup}">
                 <figure class="figure">
