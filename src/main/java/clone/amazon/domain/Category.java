@@ -1,11 +1,14 @@
 package clone.amazon.domain;
 
+import clone.amazon.domain.item.Item;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter @Setter
 public class Category {
@@ -18,5 +21,5 @@ public class Category {
     private long cateLv;
     private long cateLvDetail;
 
-    // cateGroup 참조하는 외래키??
+    private List<Item> item = new ArrayList<>();
 }

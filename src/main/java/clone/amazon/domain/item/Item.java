@@ -1,5 +1,6 @@
 package clone.amazon.domain.item;
 
+import clone.amazon.domain.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter @Setter
 public class Item {
@@ -24,4 +27,5 @@ public class Item {
     private int itemStockQuantity;
     private String cateName;
 
+    private String cateGroup;
 }

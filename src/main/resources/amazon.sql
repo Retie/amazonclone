@@ -39,6 +39,7 @@ CREATE TABLE item (
 	item_stock_quantity INT,
 	
 	cate_name VARCHAR(30),
+	cate_group VARCHAR(30),
 	constraint fk_cate_name foreign key(cate_name) references category(cate_name)
 	);
 	
@@ -194,9 +195,17 @@ VALUES("",
 		50,
 		"");
 		
+-- item.cate_group의 null값 메꿔주는 update문--		
+UPDATE item
+SET cate_group =
+	(SELECT cate_group
+	FROM category
+	WHERE item.cate_name = category.cate_name);
+		
+		
 -- SEQUENCES --
 
-DROP SEQUENCE category_seq;
+DROP SEQUENCE member_id_seq;
 
 CREATE SEQUENCE member_id_seq
 	INCREMENT BY 1
@@ -229,8 +238,9 @@ SELECT * FROM category WHERE cate_id = 1;
 -- itemMapper - findByCTName test
 SELECT * FROM item WHERE cate_name LIKE "Headsets";
 
-
+-- item table에 cate_group 추가해서 출력해주는 조인쿼리
 SELECT category.cate_name, category.cate_group, item.item_ID, item.item_name, item.item_price, item.item_star, item.item_star_count
-FROM category JOIN item ON category.cate_lv = 2 WHERE category.cate_name = item.cate_name;
+FROM item JOIN category ON category.cate_name = item.cate_name;
+
 
 COMMIT;
