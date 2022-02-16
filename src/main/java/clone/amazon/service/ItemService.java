@@ -7,5 +7,4 @@ import java.util.List;
 public interface ItemService {
     List<Item> findAll();
     Item findByCTName(String cateName);
-    List<Item> findAllWithCateGroup();
 }

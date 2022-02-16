@@ -23,9 +23,8 @@ public class Item {
 
     private int itemStar;
     private int itemStarCount;
-
     private int itemStockQuantity;
-    private String cateName;
 
+    private String cateName;
     private String cateGroup;
 }

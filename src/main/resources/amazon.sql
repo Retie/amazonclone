@@ -29,7 +29,7 @@ CREATE TABLE category (
 	cate_lv_detail INT
 	);
 	
-CREATE TABLE item (
+CREATE TABLE item
 	item_ID INT AUTO_INCREMENT PRIMARY KEY,
 	item_name VARCHAR(300),
 	item_price FLOAT,
@@ -237,10 +237,6 @@ SELECT * FROM category WHERE cate_id = 1;
 
 -- itemMapper - findByCTName test
 SELECT * FROM item WHERE cate_name LIKE "Headsets";
-
--- item table에 cate_group 추가해서 출력해주는 조인쿼리
-SELECT category.cate_name, category.cate_group, item.item_ID, item.item_name, item.item_price, item.item_star, item.item_star_count
-FROM item JOIN category ON category.cate_name = item.cate_name;
 
 
 COMMIT;

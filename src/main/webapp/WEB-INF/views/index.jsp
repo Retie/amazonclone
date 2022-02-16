@@ -21,14 +21,34 @@
                 <img src="/resources/img/mainImage3.png" class="d-block w-100" alt="Image3">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        <a class="carousel-control-prev" role="button" data-bs-target="#carouselExampleControls"
                 data-bs-slide="prev">
-            <span class="carousel-control-prev" aria-hidden="true"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" role="button" data-bs-target="#carouselExampleControls"
                 data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        </button>
+        </a>
+        <script>
+            $(function(){
+                $('.carousel-control-prev').click(function() {
+                    $('#carouselExampleControls').carousel('prev');
+                });
+                $('.carousel-control-next').click(function() {
+                    $('#carouselExampleControls').carousel('next');
+                });
+                $('#carouselExampleControls').carousel({
+                    //슬라이딩 자동 순환 지연시간. false면 순환 X
+                    interval: 7000,
+                    //hover할 시 자동순환 멈춤
+                    pause: "hover",
+                    //순환 설정
+                    wrap: true,
+                    //키보드 이벤트 설정 여부
+                    keyboard: true
+                });
+            });
+        </script>
     </div>
 </div>
 
@@ -90,6 +110,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

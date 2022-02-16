@@ -22,16 +22,14 @@
     <div class="container-fluid my-3">
         <!-- item list를 불러오도록 편집! -->
         <c:set var="categoryGroup" value="${cateGroup}"/>
-        <c:out value="${categoryGroup}"/>
-        <c:forEach var="item" items="${item}" begin="0">
-            <c:if test="${item.cateGroup == categoryGroup}">
+        <c:forEach var="items" items="${items}" begin="0">
+            <c:if test="${items.cateGroup eq categoryGroup}">
                 <figure class="figure">
-                    <a href="/orders?cateID=${item.itemID}">
+                    <a href="/orders?cateID=${items.itemID}">
                         <figure class="figure">
-                            <img src="/resources/img/orders/ct${item.itemID}.PNG"
-                                 class="figure-img img-fluid rounded"
-                                 alt="ct1-1">
-                            <figcaption class="figure-caption">${item.itemName}</figcaption>
+                            <img src="/resources/img/orders/${cateName}/${items.cateName}${items.itemID}.PNG"
+                                 class="figure-img img-fluid rounded">
+                            <figcaption class="figure-caption">${items.itemName}</figcaption>
                         </figure>
                     </a>
                 </figure>

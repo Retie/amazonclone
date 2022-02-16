@@ -24,8 +24,4 @@ public class ItemServiceImpl implements ItemService {
         return itemMapper.findByCTName(cateName);
     }
 
-    @Override
-    public List<Item> findAllWithCateGroup() {
-        return itemMapper.findAllWithCateGroup();
-    }
 }

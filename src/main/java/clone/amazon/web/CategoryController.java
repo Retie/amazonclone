@@ -35,17 +35,14 @@ public class CategoryController {
         String cateGroup = categoryService.findByCTID(cateID).getCateGroup();
 
         List<Category> category = categoryService.findAll();
-        List<Item> item = itemService.findAllWithCateGroup();
-        log.info("findAll_withCateGroup: " + itemService.findAllWithCateGroup());
+        List<Item> items = itemService.findAll();
 
-        log.info("cateName: " + cateName);
-        log.info("cateDesc: " + cateDesc);
-        log.info("category: " + category);
+        log.info("items.cateGroup: " + cateGroup);
 
         model.addAttribute("cateName", cateName);
         model.addAttribute("cateDesc", cateDesc);
         model.addAttribute("cateGroup", cateGroup);
-        model.addAttribute("item", item);
+        model.addAttribute("items", items);
         return "orders/categoryMain";
     }
 
